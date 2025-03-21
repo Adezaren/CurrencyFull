@@ -1,0 +1,68 @@
+html {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    
+    
+}
+
+body {
+    margin: 100px 100px;
+  
+    
+} 
+
+header {
+    background-color: #E1C16E;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px 25px 0 0;
+    text-transform: uppercase;
+    text-align: center;
+
+}
+
+.obsah {
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    display: block;
+   
+
+}
+
+
+input, select {
+    font-size: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    display: flex;
+}
+
+button {
+    font-size: 15px;
+    padding: 10px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 25px;
+    background-color: #9ACD32;
+}
+
+button:hover {
+    background-color: #6B8E23;
+}
+
+footer {
+    background-color: #E1C16E;
+    padding: 5px;
+    padding-right: 25px;
+    margin-bottom: 20px;
+    border-radius: 0 0 20px 25px;
+    max-width: 750px;
+    font-size: small;
+    text-align: center;
+}
+    

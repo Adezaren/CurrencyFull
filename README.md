@@ -10,3 +10,5 @@ Repozitář:
 https://github.com/Adezaren/CurrencyFull
 
 API_KEY=18c80f421cf841e0ac5cb7357a6a7e21
+
+mongodb://localhost:27017/conversions

@@ -5,13 +5,11 @@ import mongoose from 'mongoose';
 
 const app = express();
 const PORT = 3000;
-const API_KEY = '4cce2b5f82d26d6c819c6c22486071ef';
+const API_KEY = '18c80f421cf841e0ac5cb7357a6a7e21';
 const API_URL = `http://data.fixer.io/api/latest?access_key=${API_KEY}`;
 
 app.use(cors());
 app.use(express.static('public'));
-
-let exchangeRates = {};
 
 mongoose.connect('mongodb://127.0.0.1:27017/currencyDB', {
     useNewUrlParser: true,
@@ -31,14 +29,20 @@ const schema = new mongoose.Schema({
 const Conversion = mongoose.model('Conversion', schema);
 
 app.get('/api/currencies', async (req, res) => {
-    const response = await fetch(API_URL);
+    const response = await fetch(`https://api.exchangerate.host/symbols?access_key=${API_KEY}`);
     const data = await response.json();
+
 
     if (!data.success) {
         return res.status(500).json({error: "něco se nepodařilo"});
     }
 
-    res.json({currencies: Object.keys(data.rates)});
+    const currencies = Object.entries(data.symbols).map(([symbol, name]) => ({
+        symbol,
+        name
+    }));
+
+    res.json({currencies});
 });
 
 app.get('/api/convert', async (req, res) => {

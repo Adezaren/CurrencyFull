@@ -1,6 +1,5 @@
 async function convertCurrency () {
     
-
     const amount = parseFloat(document.getElementById('amount').value);
     const targetCurrency = document.getElementById('currency').value;
     
@@ -20,22 +19,20 @@ async function convertCurrency () {
 
 async function fetchCurrencies() {
     
-        const response = await fetch('http://localhost:3000/api/currencies');
-        const data = await response.json();
-        const currencySelect = document.getElementById('currency');
+    const response = await fetch('http://localhost:3000/api/currencies');
+    const data = await response.json();
+    const currencySelect = document.getElementById('currency');
 
-        currencySelect.innerHTML = '';
-        
-        data.currencies.forEach(currency => {
-            let option = document.createElement('option');
-            option.value = currency;
-            option.textContent = currency;
-            currencySelect.appendChild(option);
-        });
-
-        fetchStats();
+    currencySelect.innerHTML = '';
     
-};
+    data.currencies.forEach(currency => {
+        const option = document.createElement('option');
+        option.value = currency.symbol;
+        option.textContent = `${currency.symbol} - ${currency.name}`;
+        currencySelect.appendChild(option);
+    });
+
+}
 
 async function fetchStats() {
 
